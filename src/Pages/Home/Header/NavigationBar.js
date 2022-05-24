@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
     return (
-        <div className=" md:px-16">
+        <div className=" md:px-16 " >
             <div>
                 <div className=' container mx-auto'>
                     <div className='w-full bg-primary flex justify-between items-center md:hidden'>

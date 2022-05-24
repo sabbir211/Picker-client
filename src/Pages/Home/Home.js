@@ -1,6 +1,7 @@
 import React from 'react';
 import Loader from '../Shared/Loader/Loader';
 import Banner from './Banner/Banner';
+import BusinessSummary from './BusinessSummary/BusinessSummary';
 import Header from './Header/Header';
 import Moto from './Moto/Moto';
 import Tools from './Tools/Tools';
@@ -15,14 +16,14 @@ const Home = () => {
     //     { img: "https://i.ibb.co/sWZ0d9H/Exhauster.jpg", description:"he material provides a sufficiently thick coating that covers the exhaust effectively." , name:"Exhauser " , minOrder: 16, available:78 , price:147 , },
     // ]
     //   console.log(JSON.stringify(x));
-    
+
     return (
         <div>
             <Header></Header>
             <Banner></Banner>
             <Moto></Moto>
             <Tools></Tools>
-            <Loader></Loader>
+            <BusinessSummary></BusinessSummary>
         </div>
     );
 };
