@@ -1,9 +1,15 @@
-import { faBars, faCaretDown, faHamburger, faUser, faUserAlt } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCaretDown, faHamburger, faSignOut, faUser, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import {  signOut } from 'firebase/auth';
+import swal from 'sweetalert';
 
 const NavigationBar = () => {
+    const [user] = useAuthState(auth)
+    const navigate=useNavigate()
     return (
         <div className=" md:px-16 " >
             <div>
@@ -21,16 +27,16 @@ const NavigationBar = () => {
                             </ul>
                         </div>
                         <div className="dropdown dropdown-left ">
-                        <label tabIndex="0" htmlFor='userCheck'>
-                            <div className='flex cursor-pointer'>                               
-                                <FontAwesomeIcon icon={faUser} className="px-6 py-2 "></FontAwesomeIcon>
-                            </div>
-                        </label>
-                        <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><a>Item 1</a></li>
-                            <li><a>Item 2</a></li>
-                        </ul>
-                      </div>
+                            <label tabIndex="0" htmlFor='userCheck'>
+                                <div className='flex cursor-pointer'>
+                                    <FontAwesomeIcon icon={faUser} className="px-6 py-2 "></FontAwesomeIcon>
+                                </div>
+                            </label>
+                            <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                <li><a>Item 1</a></li>
+                                <li><a>Item 2</a></li>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
@@ -52,8 +58,20 @@ const NavigationBar = () => {
                             </div>
                         </label>
                         <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><a>Item 1</a></li>
-                            <li><a>Item 2</a></li>
+                            {
+                                user ? <>
+                                    <li onClick={async()=>{
+                                       await signOut(auth)
+                                       swal("Sign out","Sign out successful","success")
+                                       navigate("/")
+
+                                    }} ><Link to="/login">Logout</Link></li></> : <>
+                                    <li><Link to="/login">Login</Link></li>
+                                    <li><Link to="/register">Register</Link></li>
+                                </>
+                            }
+
+
                         </ul>
                     </div>
 

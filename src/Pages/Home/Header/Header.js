@@ -3,13 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown, faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import NavigationBar from './NavigationBar';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+    const navigate=useNavigate()
     return (
         <div>
             <div className='grid grid-cols-1   px-16  pt-6 pb-3 items-center md:grid-cols-4 justify-items-center md:justify-items-stretch'>
                 <div>
-                    <h1 className='text-6xl font-semibold uppercase text-gray-700 pb-6 md:pb-0'>Picker</h1>
+                    <h1 className='cursor-pointer text-6xl font-semibold uppercase text-gray-700 pb-6 md:pb-0' onClick={()=>navigate("/")}>Picker</h1>
                 </div>
                 <div className="form-control col-span-2 hidden md:block">
                     <div className="input-group">
