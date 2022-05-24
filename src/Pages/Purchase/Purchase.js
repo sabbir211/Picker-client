@@ -1,0 +1,70 @@
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
+import { useParams } from 'react-router-dom';
+import swal from 'sweetalert';
+import Loader from '../Shared/Loader/Loader';
+
+const Purchase = () => {
+    const { id } = useParams()
+    const [orderError, setOrderError] = useState(false)
+    const { isLoading, error, data } = useQuery('singleItem', () => axios.get(`http://localhost:5000/purchase/${id}`))
+    if (isLoading) {
+        return <Loader></Loader>
+    }
+    if (error) {
+        swal("Error", error.message, "error")
+    }
+    const { img, description, minOrder, price, name, available } = data.data
+    const handleOrderError = (e) => {
+        console.log(e.target.value);  
+        setOrderError(false)
+        if (minOrder >e.target.value  || available <e.target.value ) {
+            setOrderError(true)
+        }
+    }
+    return (
+        <div className=' grid grid-cols-1 md:grid-cols-2 my-4'>
+            <div className='ml-6 border text-center '>
+                <img src={img} alt="" className='w-4/6' />
+                <div className='hidden md:grid grid-cols-4 w-3/5 '>
+                    <img src={img} alt="" />
+                    <img src={img} alt="" />
+                    <img src={img} alt="" />
+                    <img src={img} alt="" />
+                </div>
+            </div>
+            <div className="shadow p-5 md:p-14 ">
+                <h1 className='text-5xl my-3'>{name}</h1>
+                <p >{description}</p>
+                <p className='text-3xl'>${price} Per unit</p>
+                <div className='my-4'>
+                    <div className='flex justify-between md:px-20 '>
+                        <p>Available {available} </p>
+                        <p>Minimum order {minOrder}</p>
+                    </div>
+
+                    <form>
+                        <label class="label">
+                            <span class="label-text">Enter Quantity.</span>
+                        </label>
+                        {
+                            orderError && <div class="alert alert-warning shadow-lg">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                                    <span>Warning: Invalid email address!</span>
+                                </div>
+                            </div>
+                        }
+                        <input onChange={handleOrderError} defaultValue={minOrder} type="text" placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs" />
+                        <input type="submit" disabled={orderError?true:false} className='btn btn-primary' value="Place order" />
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Purchase;

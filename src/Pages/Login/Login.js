@@ -52,19 +52,19 @@ const Login = () => {
                             <span className="label-text"> Email</span>
                         </label>
                        
-                        <label class="input-group">
+                        <label className="input-group">
                             <span className='bg-secondary '><FontAwesomeIcon className='text-2xl text-white' icon={faEnvelope}></FontAwesomeIcon></span>
                             <input {...register("email", { required: true })} type="text" placeholder="example@email.com" className=" focus:outline-none input input-bordered w-full max-w-xs" id='email' />
                         </label>
                         <label className="label" htmlFor='password'>
                             <span className="label-text"> Password</span>
                         </label>
-                        <label class="input-group">
+                        <label className="input-group">
                         <span className='bg-secondary '><FontAwesomeIcon className='text-2xl text-white' icon={faLock}></FontAwesomeIcon></span>
                             <input {...register("password", { required: true })} type="password" placeholder="password" className="input input-bordered w-full max-w-xs focus:outline-none" id='password' />
                         </label>
                         
-                        <label for="resetModal" class=" link-hover  modal-button">Forgot password ?</label>
+                        <label for="resetModal" className=" link-hover  modal-button">Forgot password ?</label>
 
                         <input type="submit" value="Login" className="btn btn-secondary mt-4 w-full max-w-xs" />
 

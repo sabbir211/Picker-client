@@ -1,8 +1,8 @@
 import React from 'react';
-import Loader from '../Shared/Loader/Loader';
 import Banner from './Banner/Banner';
 import BusinessSummary from './BusinessSummary/BusinessSummary';
-import Header from './Header/Header';
+import ExtraSec from './ExtraSec/ExtraSec';
+
 import Moto from './Moto/Moto';
 import Tools from './Tools/Tools';
 
@@ -24,6 +24,7 @@ const Home = () => {
             <Moto></Moto>
             <Tools></Tools>
             <BusinessSummary></BusinessSummary>
+           <ExtraSec></ExtraSec>
         </div>
     );
 };

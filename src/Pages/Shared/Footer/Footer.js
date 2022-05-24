@@ -50,7 +50,7 @@ const Footer = () => {
                     <form onSubmit={handleSubmit(handleSubscribe)}>
                         <div className=' my-3'>
                             <label className='' htmlFor="email">Email</label>
-                                <input id='email' type="email"  placeholder="Type email" class="input input-bordered w-full max-w-xs" {...register("email")}/>
+                                <input id='email' type="email"  placeholder="Type email" className="input input-bordered w-full max-w-xs" {...register("email")}/>
                         </div>
                         <input type="submit" value="Subscribe" className='btn btn-outline-primary rounded-pill w-100' />
                     </form>
