@@ -10,39 +10,47 @@ import Loader from '../Shared/Loader/Loader';
 
 const Purchase = () => {
     const { id } = useParams()
-    const [user,loading]=useAuthState(auth)
+    const [user, loading] = useAuthState(auth)
     const { register, handleSubmit } = useForm();
     const [orderError, setOrderError] = useState(false)
     const [totalAmount, setTotalAmount] = useState(0)
-    const { isLoading, error, data } = useQuery('singleItem', () => axios.get(`http://localhost:5000/purchase/${id}`)) 
-    if (isLoading||loading) {
+    const { isLoading, error, data } = useQuery('singleItem', () => axios.get(`http://localhost:5000/purchase/${id}`))
+    if (isLoading || loading) {
         return <Loader></Loader>
     }
     if (error) {
         swal("Error", error.message, "error")
     }
-    const { img, description, minOrder, price, name, available ,_id} = data.data
     
-      const handleOrderError =(e) => {
-        console.log(e.target.value);  
-        setOrderError(false) 
-        const total=e.target.value *price
+    const { img, description, minOrder, price, name, available, _id } = data.data
+
+    const handleOrderError = (e) => {
+        console.log(e.target.value);
+        setOrderError(false)
+        const total = e.target.value * price
         console.log(total);
         setTotalAmount(total)
-        if (minOrder >e.target.value  || available <e.target.value ) {
+        if (minOrder > e.target.value || available < e.target.value) {
             setOrderError(true)
         }
-     }
-   
-   
+    }
 
-// order placing here 
-const onSubmit = data => {
-const orderDetails={...data,totalAmount:totalAmount,OrderId:_id,status:"pending"}
-console.log(orderDetails)
-axios.post(`http://localhost:5000/purchase`,orderDetails)
-.then(res=>console.log(res))
-};
+
+
+    // order placing here 
+    const onSubmit = data => {
+        const orderDetails = { ...data, totalAmount: totalAmount, toolName:name, status: "pending" }
+        console.log(orderDetails)
+        axios.post(`http://localhost:5000/purchase`, orderDetails)
+            .then(res =>{
+                if (res.status===200) {
+                    swal("Order Placed","check my orders page and pay for it","success")
+                }
+                else{
+                    swal("Error","Something went wrong ","error")
+                }
+            })
+    };
     return (
         <div className=' grid grid-cols-1 md:grid-cols-2 my-4'>
             <div className='ml-6 border text-center '>
@@ -77,12 +85,12 @@ axios.post(`http://localhost:5000/purchase`,orderDetails)
                             </div>
                         }
                         <input {...register("orderQuantity")} onChange={handleOrderError}
-                        required type="number" placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs" />
-                        <input {...register("userName")} readOnly defaultValue={user.displayName}   type="text" placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs" />
-                        <input {...register("email")} readOnly defaultValue={user.email} type="text"   placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs" />
-                        <input {...register("phone")}  type="text" required placeholder="Type phone number  required here" class="input input-bordered input-primary w-full max-w-xs" />
-                        <input {...register("address")}  type="text" placeholder="Type address here"  required class="input input-bordered input-primary w-full max-w-xs" />
-                        <input type="submit" disabled={orderError?true:false} className='btn btn-primary' value="Place order" />
+                            required type="number" placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs" />
+                        <input {...register("userName")} readOnly defaultValue={user.displayName} type="text" placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs" />
+                        <input {...register("email")} readOnly defaultValue={user.email} type="text" placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs" />
+                        <input {...register("phone")} type="text" required placeholder="Type phone number  required here" class="input input-bordered input-primary w-full max-w-xs" />
+                        <input {...register("address")} type="text" placeholder="Type address here" required class="input input-bordered input-primary w-full max-w-xs" />
+                        <input type="submit" disabled={orderError ? true : false} className='btn btn-primary' value="Place order" />
                     </form>
 
 
