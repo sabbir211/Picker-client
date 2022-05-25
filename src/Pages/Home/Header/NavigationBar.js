@@ -10,6 +10,7 @@ import swal from 'sweetalert';
 const NavigationBar = () => {
     const [user] = useAuthState(auth)
     const navigate=useNavigate()
+    
     return (
         <div className=" md:px-16 " >
             <div>
@@ -43,7 +44,7 @@ const NavigationBar = () => {
             </div>
             <div className="hidden  lg:flex justify-between w-full border ">
                 <div className='w-1/2 flex justify-evenly text-xl p-4'>
-                    <Link to="/">Left link</Link>
+                    <Link to="/">Home</Link>
                     <Link to="/">Left link</Link>
                     <Link to="/">Left link</Link>
                     <Link to="/">Left link</Link>
@@ -53,7 +54,7 @@ const NavigationBar = () => {
                         <label tabIndex="0">
                             <div className='bg-primary p-4 cursor-pointer'>
                                 <FontAwesomeIcon icon={faUser} className="mr-2"></FontAwesomeIcon>
-                                <span>My Account</span>
+                                <span>{user.displayName}</span>
                                 <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
                             </div>
                         </label>

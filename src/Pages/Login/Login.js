@@ -33,7 +33,7 @@ const Login = () => {
             swal("Login", "SuccessFully Logged in", "success")
             navigate(from, { replace: true })
         }
-    }, [user])
+    }, [user,from,navigate])
     if (loading) {
         return <Loader></Loader>
     }

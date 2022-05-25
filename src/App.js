@@ -7,18 +7,23 @@ import { Route, Routes } from 'react-router-dom';
 import Registration from './Pages/Login/Registration';
 import Header from './Pages/Home/Header/Header';
 import Purchase from './Pages/Purchase/Purchase';
+import RequireAuth from './Pages/Login/RequireAuth';
 
 function App() {
   return (
     <div>
-    <Header></Header>
-    <Routes>
-      <Route path='/' element={<Home></Home>}></Route>
-      <Route path='/login' element={<Login></Login>}></Route>
-      <Route path='/Register' element={<Registration/>}></Route>
-      <Route path='/purchase/:id' element={<Purchase/>}></Route>
-    </Routes>
-    <Footer></Footer>
+      <Header></Header>
+      <Routes>
+        <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/Register' element={<Registration />}></Route>
+        <Route path='/purchase/:id' element={
+          <RequireAuth>
+            <Purchase />
+          </RequireAuth>
+        }></Route>
+      </Routes>
+      <Footer></Footer>
     </div>
   );
 }
