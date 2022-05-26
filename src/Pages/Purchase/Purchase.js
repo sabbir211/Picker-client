@@ -14,15 +14,15 @@ const Purchase = () => {
     const { register, handleSubmit } = useForm();
     const [orderError, setOrderError] = useState(false)
     const [totalAmount, setTotalAmount] = useState(0)
-    const { isLoading, error, data } = useQuery('singleItem', () => axios.get(`http://localhost:5000/purchase/${id}`))
+    const { isLoading, error, data } = useQuery('singleItem', () => fetch(`http://localhost:5000/purchase/${id}`).then(res=>res.json()))
     if (isLoading || loading) {
         return <Loader></Loader>
     }
     if (error) {
         swal("Error", error.message, "error")
     }
-    
-    const { img, description, minOrder, price, name, available, _id } = data.data
+    const { img, description, minOrder, price, name, available, _id } = data
+    console.log(data);
 
     const handleOrderError = (e) => {
         console.log(e.target.value);
@@ -44,7 +44,7 @@ const Purchase = () => {
         axios.post(`http://localhost:5000/purchase`, orderDetails)
             .then(res =>{
                 if (res.status===200) {
-                    swal("Order Placed","check my orders page and pay for it","success")
+                    swal("Order Placed","check Dashboard page and pay for it","success")
                 }
                 else{
                     swal("Error","Something went wrong ","error")
@@ -73,23 +73,23 @@ const Purchase = () => {
                     </div>
                     <p className='text-3xl text-primary'>Your total order amount {totalAmount}$</p>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <label class="label">
-                            <span class="label-text">Enter Quantity.</span>
+                        <label className="label">
+                            <span className="label-text">Enter Quantity.</span>
                         </label>
                         {
-                            orderError && <div class="alert alert-warning shadow-lg">
+                            orderError && <div className="alert alert-warning shadow-lg">
                                 <div className='my-3'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
                                     <span>Warning: You have to chose Between {minOrder} to {available}</span>
                                 </div>
                             </div>
                         }
                         <input {...register("orderQuantity")} onChange={handleOrderError}
-                            required type="number" placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs" />
-                        <input {...register("userName")} readOnly defaultValue={user.displayName} type="text" placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs" />
-                        <input {...register("email")} readOnly defaultValue={user.email} type="text" placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs" />
-                        <input {...register("phone")} type="text" required placeholder="Type phone number  required here" class="input input-bordered input-primary w-full max-w-xs" />
-                        <input {...register("address")} type="text" placeholder="Type address here" required class="input input-bordered input-primary w-full max-w-xs" />
+                            required type="number" placeholder="Type here" className="input input-bordered input-primary w-full max-w-xs" />
+                        <input {...register("userName")} readOnly defaultValue={user.displayName} type="text" placeholder="Type here" className="input input-bordered input-primary w-full max-w-xs" />
+                        <input {...register("email")} readOnly defaultValue={user.email} type="text" placeholder="Type here" className="input input-bordered input-primary w-full max-w-xs" />
+                        <input {...register("phone")} type="text" required placeholder="Type phone number  required here" className="input input-bordered input-primary w-full max-w-xs" />
+                        <input {...register("address")} type="text" placeholder="Type address here" required className="input input-bordered input-primary w-full max-w-xs" />
                         <input type="submit" disabled={orderError ? true : false} className='btn btn-primary' value="Place order" />
                     </form>
 

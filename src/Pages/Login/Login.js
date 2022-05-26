@@ -64,7 +64,7 @@ const Login = () => {
                             <input {...register("password", { required: true })} type="password" placeholder="password" className="input input-bordered w-full max-w-xs focus:outline-none" id='password' />
                         </label>
                         
-                        <label for="resetModal" className=" link-hover  modal-button">Forgot password ?</label>
+                        <label htmlFor="resetModal" className=" link-hover  modal-button">Forgot password ?</label>
 
                         <input type="submit" value="Login" className="btn btn-secondary mt-4 w-full max-w-xs" />
 
