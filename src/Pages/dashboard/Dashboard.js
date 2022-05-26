@@ -4,12 +4,12 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
-import useAdmin from '../../Hooks/useAdmin';
+// import useAdmin from '../../Hooks/useAdmin';
 import Loader from '../Shared/Loader/Loader';
 
 const Dashboard = () => {
     const [user, loading] = useAuthState(auth)
-    const [admin] = useAdmin(user)
+    // const [admin] = useAdmin(user)
     if (loading) {
         return <Loader></Loader>
     }
