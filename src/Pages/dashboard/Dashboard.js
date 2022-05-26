@@ -32,6 +32,9 @@ const Dashboard = () => {
                     {
                         admin ? <>
                             <li><Link to="makeadmin">Make Admin</Link></li>
+                            <li><Link to="manageAllOrder">Manage All Orders</Link></li>
+                            <li><Link to="manageTools">Manage Tools</Link></li>
+                            <li><Link to="addTool">Add A Tool</Link></li>
                         </> : <>
                             <li><Link to="myorders">My Orders</Link></li>
                             <li><Link to="addreview">Add A Review</Link></li>

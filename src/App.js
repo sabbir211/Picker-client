@@ -14,6 +14,10 @@ import AddReview from './Pages/dashboard/AddReview';
 import MyProfile from './Pages/dashboard/MyProfile';
 import PaymentPage from './Pages/dashboard/PaymentPage';
 import MakeAdmin from './Pages/dashboard/MakeAdmin';
+import RequireAdmin from './Pages/Shared/RequireAdmin';
+import ManageAllOrder from './Pages/dashboard/AdminCompo/ManageAllOrder';
+import ManageATool from './Pages/dashboard/AdminCompo/ManageATool';
+import AddTool from './Pages/dashboard/AdminCompo/AddTool';
 
 
 function App() {
@@ -39,7 +43,10 @@ function App() {
           <Route path='addreview' element={<AddReview></AddReview>}></Route>
           <Route path='myprofile' element={<MyProfile></MyProfile>}></Route>
           <Route path='paymentpage/:id' element={<PaymentPage></PaymentPage>}></Route>
-          <Route path='makeadmin' element={<MakeAdmin></MakeAdmin>}></Route>
+          <Route path='makeadmin' element={<RequireAdmin><MakeAdmin></MakeAdmin></RequireAdmin>}></Route>
+          <Route path='manageAllOrder' element={<RequireAdmin><ManageAllOrder></ManageAllOrder></RequireAdmin>}></Route>
+          <Route path='manageTools' element={<RequireAdmin><ManageATool></ManageATool></RequireAdmin>}></Route>
+          <Route path='addTool' element={<RequireAdmin><AddTool></AddTool></RequireAdmin>}></Route>
         </Route>
       </Routes>
       <Footer></Footer>
