@@ -9,12 +9,12 @@ import swal from 'sweetalert';
 import Loader from '../../Shared/Loader/Loader';
 
 const NavigationBar = () => {
-    const [user, loading] = useAuthState(auth)
-
+    const [user, loading,error] = useAuthState(auth)
     const navigate = useNavigate()
     if (loading) {
         return <Loader></Loader>
     }
+   
     return (
         <div className=" md:px-16 " >
             <div>
