@@ -40,7 +40,7 @@ const Dashboard = () => {
                             <li><Link to="addreview">Add A Review</Link></li>
                         </>
                     }
-                    <li><Link to="myprofile">My Profile</Link></li>
+                    <li><Link to="/dashboard">My Profile</Link></li>
 
 
 

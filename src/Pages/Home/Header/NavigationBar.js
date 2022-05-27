@@ -30,6 +30,7 @@ const NavigationBar = () => {
                                 <li><Link to="/">Home</Link></li>
                                 <li><Link to="/dashboard">Dashboard</Link></li>
                                 <li><Link to="/blogs">Blogs</Link></li>
+                                <li><Link to="/portfolio">My Portfolio</Link></li>
                             </ul>
                         </div>
                         <div className="dropdown dropdown-left ">
@@ -64,7 +65,7 @@ const NavigationBar = () => {
                     <Link to="/">Home</Link>
                     <Link to="/dashboard">Dashboard</Link>
                  <Link to="/blogs">Blogs</Link>
-                    <Link to="/">Left link</Link>
+                    <Link to="/portfolio">My Portfolio</Link>
                 </div>
                 <div>
                     <div className="dropdown dropdown-hover">
