@@ -1,10 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
+import ReactStars from "react-rating-stars-component";
+import swal from 'sweetalert';
+import auth from '../../firebase.init';
+import Loader from '../Shared/Loader/Loader';
 
 const AddReview = () => {
+    const [rate, setRate] = useState(0)
+    const [user,loading]=useAuthState(auth)
+    const { register, handleSubmit, reset } = useForm();
+    const ratingChanged = (newRating) => {
+        setRate(newRating);
+    };
+    if (loading) {
+        return <Loader></Loader>
+        
+    }
+    const handleRatting = (data) => {
+        const description = data.description
+        const name=user?.displayName
+        const rateData = { description: description, ratting: rate, name:name}
+        fetch(`http://localhost:5000/ratting`, {
+            method: "post",
+            headers: {
+                "content-type": "application/json"
+            }
+            ,
+            body: JSON.stringify(rateData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    swal("SUCCESS", ' Ratting added successfully', "success")
+                    reset()
+                }
+
+            })
+    }
     return (
-        <div>
-            <h3>my review</h3>
-        </div>
+        <div className='flex justify-center'>
+            <div class="card w-96 bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title"> Add a Review</h2>
+                    <form onSubmit={handleSubmit(handleRatting)}>
+                        <textarea {...register("description")} required class="textarea textarea-bordered" ></textarea>
+                        <p>Give Ratting</p>
+                        <ReactStars
+                            count={5}
+                            onChange={ratingChanged}
+                            size={24}
+                            activeColor="#ffd700"
+                        />
+                        <div class="card-actions justify-end">
+
+                            <input type="submit" class="btn btn-primary" value="Submit" />
+                        </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+
+
+        </div >
     );
 };
 
