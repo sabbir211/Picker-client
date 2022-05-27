@@ -28,9 +28,7 @@ const PaymentPage = () => {
                     <p>Delivery address: {data?.address}</p>
                     <p>Phone Number:{data?.phone}</p>
                     <p> Quantity:{data?.orderQuantity}</p>
-                    <p> Total amount:{data?.totalAmount}</p>
-
-                   
+                    <p> Total amount:{data?.totalAmount}</p>                 
                 </div>
             </div>
             <div className="card w-96 bg-base-100 shadow-xl">
