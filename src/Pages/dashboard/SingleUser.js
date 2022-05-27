@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 const SingleUser = ({ user, count, refetch }) => {
     const email = user?.email
     const handleMakeAdmin = () => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://picker-pial.herokuapp.com/user/admin/${email}`, {
             method: "PUT",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`

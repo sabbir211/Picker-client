@@ -9,7 +9,7 @@ import CheckoutForm from './CheckoutForm';
 const stripePromise = loadStripe('pk_test_51L3UhfBNkSNOWAa15sGjHJRrCFqXjCnM62fxBaRElHDD2CSvKK1w8gx1kDJ86oC2PFNDsKR5AgQTB1f0UXK8IVdw00KYx6nULU');
 const PaymentPage = () => {
     const { id } = useParams()
-    const { data, isLoading } = useQuery(['booking', id], () => fetch(`http://localhost:5000/payment/${id}`, {
+    const { data, isLoading } = useQuery(['booking', id], () => fetch(`https://picker-pial.herokuapp.com/payment/${id}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -20,12 +20,11 @@ const PaymentPage = () => {
         return <Loader></Loader>
     }
     const {userName,totalAmount,_id}=data
-    console.log(data);
     return (
         <div>
-            <div class="card w-96 bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title">{data?.toolName}</h2>
+            <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card-body">
+                    <h2 className="card-title">{data?.toolName}</h2>
                     <p>Delivery address: {data?.address}</p>
                     <p>Phone Number:{data?.phone}</p>
                     <p> Quantity:{data?.orderQuantity}</p>
@@ -34,8 +33,8 @@ const PaymentPage = () => {
                    
                 </div>
             </div>
-            <div class="card w-96 bg-base-100 shadow-xl">
-                <div class="card-body">                 
+            <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card-body">                 
                         <Elements stripe={stripePromise}>
                             <CheckoutForm totalAmount={totalAmount} userName={userName} id={_id}/>
                         </Elements>

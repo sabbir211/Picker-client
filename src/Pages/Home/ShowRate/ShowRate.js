@@ -8,7 +8,7 @@ const ShowRate = () => {
     const [load, setLoad] = useState(false)
     useEffect(() => {
         setLoad(true)
-        fetch('http://localhost:5000/ratting', {
+        fetch('https://picker-pial.herokuapp.com/ratting', {
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`
             }
@@ -23,19 +23,19 @@ const ShowRate = () => {
         return <Loader></Loader>
 
     }
-    console.log(rate);
+   
     return (
         <div className=''>
             <h1 className='text-4xl text-center md:my-11 my-4'>User Reviews</h1>
-         <div className='my-4 mx-5 grid grid-cols-3'>
-            {
-                rate.map(r => {
+         <div className='my-4 mx-5 grid grid-cols-1 md:grid-cols-3 '>
+            { rate.length>0 &&
+                rate.map((r,index) => {
                     return (
-                        <div class="card w-96 bg-base-100 shadow-xl">
-                            <div class="card-body">
-                                <h2 class="card-title"> {r?.name}</h2>
+                        <div className="card w-96 bg-base-100 shadow-xl" key={index}>
+                            <div className="card-body">
+                                <h2 className="card-title"> {r?.name}</h2>
                                 <p>{
-                                    [...Array(r.ratting).keys()].map(x=><FontAwesomeIcon className='text-primary' icon={faStar}></FontAwesomeIcon>)
+                                    [...Array(r?.ratting).keys()].map((x,index)=><FontAwesomeIcon key={index} className='text-primary' icon={faStar}></FontAwesomeIcon>)
                                 }</p>
                                 <p>Ratting: {r?.ratting}</p>
                                 <p>{r?.description}</p>

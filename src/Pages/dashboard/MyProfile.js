@@ -12,7 +12,7 @@ const MyProfile = () => {
     const [updatedUser, setUpdatedUser] = useState({})
     useEffect(() => {
         const update = async () => {
-            fetch(`http://localhost:5000/user/${user.email}`, {
+            fetch(`https://picker-pial.herokuapp.com/user/${user.email}`, {
                 method: "put",
                 headers: {
                     "content-type": "application/json",
@@ -21,7 +21,7 @@ const MyProfile = () => {
                 , body: JSON.stringify(userInfo)
             }).then(res => res.json())
                 .then(data => {
-                    fetch(`http://localhost:5000/user/${user.email}`, {
+                    fetch(`https://picker-pial.herokuapp.com/user/${user.email}`, {
                         method: "get",
                         headers: {
                             "content-type": "application/json",
@@ -29,7 +29,7 @@ const MyProfile = () => {
                         }
                     }).then(res => res.json())
                         .then(data => {
-                            console.log(data);
+                            
                             setUpdatedUser(data)
                         })
                 })
@@ -40,7 +40,6 @@ const MyProfile = () => {
     if (loading) {
         return <Loader></Loader>
     }
-    console.log(updatedUser);
     const handleUpdate = async (data) => {
         setUserInfo(data)
         reset()
@@ -48,54 +47,54 @@ const MyProfile = () => {
     }
 
     return (
-        <div class="hero min-h-screen bg-base-200">
-            <div class="hero-content flex-col lg:flex-row-reverse">
-                <div class="text-center lg:text-left">
-                    <div class="avatar">
-                        <div class="w-24 rounded">
+        <div className="hero min-h-screen bg-base-200">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="text-center lg:text-left">
+                    <div className="avatar">
+                        <div className="w-24 rounded">
                             <img src={updatedUser?.photoUrl} alt='' />
                         </div>
                     </div>
-                    <h1 class="text-5xl font-bold">Hello {user?.displayName}</h1>
-                    <p class="py-6">Your Email: {user?.email}</p>
-                    <p class="py-6">Education:{updatedUser?.education}</p>
-                    <p class="py-6">Location: {updatedUser?.location}</p>
-                    <p class="py-6">Linkedin Profile{updatedUser?.linkedin}</p>
+                    <h1 className="text-5xl font-bold">Hello {user?.displayName}</h1>
+                    <p className="py-6">Your Email: {user?.email}</p>
+                    <p className="py-6">Education:{updatedUser?.education}</p>
+                    <p className="py-6">Location: {updatedUser?.location}</p>
+                    <p className="py-6">Linkedin Profile{updatedUser?.linkedin}</p>
 
                 </div>
-                <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleSubmit(handleUpdate)}>
-                        <div class="card-body">
+                        <div className="card-body">
                             <h1 className='text-primary text-2xl text-center'>Update Profile</h1>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Education</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Education</span>
                                 </label>
-                                <input {...register("education")} type="text" placeholder="text" class="input input-bordered" />
+                                <input {...register("education")} type="text" placeholder="text" className="input input-bordered" />
                             </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Location</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Location</span>
                                 </label>
-                                <input  {...register("location")} type="text" placeholder="text" class="input input-bordered" />
+                                <input  {...register("location")} type="text" placeholder="text" className="input input-bordered" />
 
                             </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Linkedin Profile</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Linkedin Profile</span>
                                 </label>
-                                <input  {...register("linkedin")} type="text" placeholder="text" class="input input-bordered" />
+                                <input  {...register("linkedin")} type="text" placeholder="text" className="input input-bordered" />
 
                             </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Photo URL</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Photo URL</span>
                                 </label>
-                                <input  {...register("photoUrl")} type="text" placeholder="text" class="input input-bordered" />
+                                <input  {...register("photoUrl")} type="text" placeholder="text" className="input input-bordered" />
 
                             </div>
-                            <div class="form-control mt-6">
-                                <button class="btn btn-primary">Update</button>
+                            <div className="form-control mt-6">
+                                <button className="btn btn-primary">Update</button>
                             </div>
                         </div>
                     </form>

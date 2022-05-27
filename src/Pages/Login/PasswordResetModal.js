@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 const PasswordResetModal = () => {
     const { register, handleSubmit } = useForm();
     const handleReset=(data)=>{
-console.log(data);
 document.getElementById("resetModal").checked=false
     }
     return (

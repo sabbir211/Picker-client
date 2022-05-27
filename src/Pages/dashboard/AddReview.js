@@ -21,7 +21,7 @@ const AddReview = () => {
         const description = data.description
         const name=user?.displayName
         const rateData = { description: description, ratting: rate, name:name}
-        fetch(`http://localhost:5000/ratting`, {
+        fetch(`https://picker-pial.herokuapp.com/ratting`, {
             method: "post",
             headers: {
                 "content-type": "application/json"
@@ -40,11 +40,11 @@ const AddReview = () => {
     }
     return (
         <div className='flex justify-center'>
-            <div class="card w-96 bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title"> Add a Review</h2>
+            <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card-body">
+                    <h2 className="card-title"> Add a Review</h2>
                     <form onSubmit={handleSubmit(handleRatting)}>
-                        <textarea {...register("description")} required class="textarea textarea-bordered" ></textarea>
+                        <textarea {...register("description")} required className="textarea textarea-bordered" ></textarea>
                         <p>Give Ratting</p>
                         <ReactStars
                             count={5}
@@ -52,9 +52,9 @@ const AddReview = () => {
                             size={24}
                             activeColor="#ffd700"
                         />
-                        <div class="card-actions justify-end">
+                        <div className="card-actions justify-end">
 
-                            <input type="submit" class="btn btn-primary" value="Submit" />
+                            <input type="submit" className="btn btn-primary" value="Submit" />
                         </div>
 
                     </form>

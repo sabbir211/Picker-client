@@ -13,7 +13,7 @@ const CheckoutForm = ({ totalAmount, userName ,id}) => {
     console.log(totalAmount, userName);
     useEffect(() => {
 
-        fetch(`http://localhost:5000/create-payment-intent`, {
+        fetch(`https://picker-pial.herokuapp.com/create-payment-intent`, {
             method: "post",
             headers: {
                 "content-type": "application/json",
@@ -85,7 +85,7 @@ const CheckoutForm = ({ totalAmount, userName ,id}) => {
             setProcessing(false)
             const confirmedOrder={transactionId:paymentIntent.id,toolsId:id}
             swal("SUCCESS", "Payment success", "success")
-            fetch(`http://localhost:5000/orderConfirmed/${id}`, {
+            fetch(`https://picker-pial.herokuapp.com/orderConfirmed/${id}`, {
                 method: "put",
                 headers: {
                     "content-type": "application/json",

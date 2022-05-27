@@ -25,7 +25,6 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
     const [token] = useToken(user)
     const onSubmit = data => {
-        console.log(data)
         signInWithEmailAndPassword(data.email, data.password)
     };
     useEffect(() => {
