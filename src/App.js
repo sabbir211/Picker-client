@@ -18,6 +18,7 @@ import RequireAdmin from './Pages/Shared/RequireAdmin';
 import ManageAllOrder from './Pages/dashboard/AdminCompo/ManageAllOrder';
 import ManageATool from './Pages/dashboard/AdminCompo/ManageATool';
 import AddTool from './Pages/dashboard/AdminCompo/AddTool';
+import Blogs from './Pages/Blogs/Blogs';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/Register' element={<Registration />}></Route>
+        <Route path='/blogs' element={<Blogs/>}></Route>
         <Route path='/purchase/:id' element={
           <RequireAuth>
             <Purchase />

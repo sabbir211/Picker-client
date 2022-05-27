@@ -29,6 +29,7 @@ const NavigationBar = () => {
                             <ul tabIndex="2" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <li><Link to="/">Home</Link></li>
                                 <li><Link to="/dashboard">Dashboard</Link></li>
+                                <li><Link to="/blogs">Blogs</Link></li>
                             </ul>
                         </div>
                         <div className="dropdown dropdown-left ">
@@ -62,7 +63,7 @@ const NavigationBar = () => {
                 <div className='w-1/2 flex justify-evenly text-xl p-4'>
                     <Link to="/">Home</Link>
                     <Link to="/dashboard">Dashboard</Link>
-                    <Link to="/">Left link</Link>
+                 <Link to="/blogs">Blogs</Link>
                     <Link to="/">Left link</Link>
                 </div>
                 <div>

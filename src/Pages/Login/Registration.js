@@ -24,7 +24,6 @@ const Registration = () => {
     const[token]=useToken(user)
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password, { sendEmailVerification: true })
-       
         await updateProfile({ displayName: data.name })
     };
 
