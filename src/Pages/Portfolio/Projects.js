@@ -2,9 +2,9 @@ import React from 'react';
 
 const Projects = () => {
     return (
-        <div className='my-11 mx-4'> 
+        <div className='my-11'> 
             <h1 className='text-4xl text-center'> MY WORKS </h1>
-            <div className='grid grid-cols-1 md:grid-cols-3'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 justify-items-center' >
                 <div className="card w-96 bg-base-100 shadow-xl">
                     <div className="card-body">
                         <h2 className="card-title">Car house</h2>

@@ -35,9 +35,11 @@ const NavigationBar = () => {
                         </div>
                         <div className="dropdown dropdown-left ">
                             <label tabIndex="0" htmlFor='userCheck'>
-                                <div className='flex cursor-pointer items-center px-3'>
+                                <div className='flex cursor-pointer items-center px-3 mx-2'>
                                     <FontAwesomeIcon icon={faUser} className=" py-2 "></FontAwesomeIcon>
+                                    <span className="mx-3">
                                     {user?.displayName}
+                                    </span>
                                     <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
                                 </div>
                             </label>
@@ -72,7 +74,7 @@ const NavigationBar = () => {
                         <label tabIndex="0">
                             <div className='bg-primary p-4 cursor-pointer'>
                                 <FontAwesomeIcon icon={faUser} className="mr-2"></FontAwesomeIcon>
-                                <span>{user?.displayName}</span>
+                                <span className='mx-3'>{user?.displayName}</span>
                                 <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
                             </div>
                         </label>

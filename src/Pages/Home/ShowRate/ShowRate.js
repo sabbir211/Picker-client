@@ -27,7 +27,7 @@ const ShowRate = () => {
     return (
         <div className=''>
             <h1 className='text-4xl text-center md:my-11 my-4'>User Reviews</h1>
-         <div className='my-4 mx-5 grid grid-cols-1 md:grid-cols-3 '>
+         <div className='my-4 mx-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-6'>
             { rate.length>0 &&
                 rate.map((r,index) => {
                     return (

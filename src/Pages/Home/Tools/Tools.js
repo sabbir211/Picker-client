@@ -17,10 +17,12 @@ if(error){
     swal("ERROR",error.message,"error")
 }
     return (
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-3 container mx-auto'>
+        <div className="mx-8 md:mx-20">
+            <div className='grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-6'>
            {
                data?.data.map(tool=><Tool tool={tool} key={tool._id}></Tool>)
            }
+        </div>
         </div>
     );
 };

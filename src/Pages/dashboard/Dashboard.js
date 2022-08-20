@@ -1,4 +1,4 @@
-import { faAngleDoubleDown, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDoubleDown, faArrowAltCircleRight, faArrowLeft, faArrowRight, faArrowRightArrowLeft, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -14,14 +14,13 @@ const Dashboard = () => {
         return <Loader></Loader>
     }
     return (
-        <div className="drawer drawer-mobile ">
+        <div className="drawer drawer-mobile">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content ">
+            <div className="drawer-content">
                 {/* <!-- Page content here --> */}
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden my-2"> <FontAwesomeIcon icon={faAngleDoubleDown} className="text-3xl "></FontAwesomeIcon></label>
+                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden my-2 left-0 top-1/3 sticky z-20"> <FontAwesomeIcon icon={faArrowRight} className="text-3xl "></FontAwesomeIcon></label>
 
-                <div className='flex flex-col '>
-                    <h1 className='text-4xl text-blue-700 my-5'>Dashboard</h1>
+                <div className='flex flex-col'>
                     <Outlet></Outlet>
                 </div>
             </div>
@@ -29,6 +28,7 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay "></label>
                 <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content ">
                     {/* <!-- Sidebar content here --> */}
+                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden my-2"> <FontAwesomeIcon icon={faArrowLeft} className="text-3xl "></FontAwesomeIcon></label>
                     {
                         admin ? <>
                             <li><Link to="makeadmin">Make Admin</Link></li>

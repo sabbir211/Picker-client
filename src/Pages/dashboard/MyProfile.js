@@ -29,7 +29,7 @@ const MyProfile = () => {
                         }
                     }).then(res => res.json())
                         .then(data => {
-                            
+
                             setUpdatedUser(data)
                         })
                 })
@@ -47,21 +47,8 @@ const MyProfile = () => {
     }
 
     return (
-        <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className="text-center lg:text-left">
-                    <div className="avatar">
-                        <div className="w-24 rounded">
-                            <img src={updatedUser?.photoUrl} alt='' />
-                        </div>
-                    </div>
-                    <h1 className="text-5xl font-bold">Hello {user?.displayName}</h1>
-                    <p className="py-6">Your Email: {user?.email}</p>
-                    <p className="py-6">Education:{updatedUser?.education}</p>
-                    <p className="py-6">Location: {updatedUser?.location}</p>
-                    <p className="py-6">Linkedin Profile{updatedUser?.linkedin}</p>
-
-                </div>
+        <div className="bg-base-200 ">
+            <div className="flex mx-8 md:mx-12 my-12 flex-col-reverse md:flex-row">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleSubmit(handleUpdate)}>
                         <div className="card-body">
@@ -100,6 +87,21 @@ const MyProfile = () => {
                     </form>
 
                 </div>
+
+                <div className="mx-4 md:mx-12">
+                    <div className="avatar">
+                        <div className="w-24 rounded">
+                            <img src={updatedUser?.photoUrl} alt='' />
+                        </div>
+                    </div>
+                    <h1 className="text-5xl font-bold">{user?.displayName}</h1>
+                    <p className="py-6">{user?.email}</p>
+                    <p className="py-6">Education:{updatedUser?.education}</p>
+                    <p className="py-6">Location: {updatedUser?.location}</p>
+                    <p className="py-6">Linkedin Profile{updatedUser?.linkedin}</p>
+
+                </div>
+
             </div>
         </div>
     );

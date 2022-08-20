@@ -17,7 +17,7 @@ const Footer = () => {
     const year=date.getFullYear()
     return (
         <div className='bg-orange-300'>
-            <div className='container mx-auto py-4 flex flex-column md:flex-row justify-between'>
+            <div className='grid grid-cols-1 md:grid-cols-3 p-8'>
                 <div>
                     <h2>CONTACT INFO</h2>
                     <p className="my-3">
@@ -34,22 +34,18 @@ const Footer = () => {
 
                         +8801756035663
                         </p>
-                    {/* <div className='footImgContainer'>
-                        <a href="https://www.facebook.com/sabbir1144" target="blank"> <img src={facebook} alt="" /></a>
-
-                        <a href="linkedin.com/in/sabbir-alam-694438234"><img src={linkedin} alt="" /></a>
-                        <img src={twitter} alt="" />
-                    </div> */}
+                   
                 </div>
                 <div>
                     <h2>Useful links</h2>
                     <Link className='text-white text-decoration-none pt-4 block' to="/"> HOME</Link>
                     <Link className='text-white text-decoration-none pt-4 block' to="/blogs">BLOGS</Link>
+                    <Link className='text-white text-decoration-none pt-4 block' to="/dashboard">Dashboard</Link>
+                    <Link className='text-white text-decoration-none pt-4 block' to="/portfolio">Portfolio</Link>
                 </div>
                 <div>
                     <form onSubmit={handleSubmit(handleSubscribe)}>
                         <div className=' my-3'>
-                            <label className='' htmlFor="email">Email</label>
                                 <input id='email' type="email"  placeholder="Type email" className="input input-bordered w-full max-w-xs" {...register("email")}/>
                         </div>
                         <input type="submit" value="Subscribe" className='btn btn-outline-primary rounded-pill w-100' />
