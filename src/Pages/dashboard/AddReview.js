@@ -21,7 +21,7 @@ const AddReview = () => {
         const description = data.description
         const name=user?.displayName
         const rateData = { description: description, ratting: rate, name:name}
-        fetch(`https://picker-pial.herokuapp.com/ratting`, {
+        fetch(`https://picker-server-production.up.railway.app/ratting`, {
             method: "post",
             headers: {
                 "content-type": "application/json"

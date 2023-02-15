@@ -14,7 +14,7 @@ const Purchase = () => {
     const { register, handleSubmit } = useForm();
     const [orderError, setOrderError] = useState(false)
     const [totalAmount, setTotalAmount] = useState(0)
-    const { isLoading, error, data } = useQuery('singleItem', () => fetch(`https://picker-pial.herokuapp.com/purchase/${id}`).then(res=>res.json()))
+    const { isLoading, error, data } = useQuery('singleItem', () => fetch(`https://picker-server-production.up.railway.app/purchase/${id}`).then(res=>res.json()))
     if (isLoading || loading) {
         return <Loader></Loader>
     }
@@ -40,7 +40,7 @@ const Purchase = () => {
     // order placing here 
     const onSubmit = data => {
         const orderDetails = { ...data, totalAmount: totalAmount, toolName:name, status: "pending" }
-        axios.post(`https://picker-pial.herokuapp.com/purchase`, orderDetails)
+        axios.post(`https://picker-server-production.up.railway.app/purchase`, orderDetails)
             .then(res =>{
                 if (res.status===200) {
                     swal("Order Placed","check Dashboard page and pay for it","success")

@@ -6,7 +6,7 @@ import Loader from '../../Shared/Loader/Loader';
 import Tool from './Tool';
 
 const Tools = () => {
-    const { isLoading, error, data } = useQuery('tools', () =>axios.get('https://picker-pial.herokuapp.com/tools')
+    const { isLoading, error, data } = useQuery('tools', () =>axios.get('https://picker-server-production.up.railway.app/tools')
    
     )
     if (isLoading) {

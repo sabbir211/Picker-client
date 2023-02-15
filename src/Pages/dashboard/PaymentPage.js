@@ -9,7 +9,7 @@ import CheckoutForm from './CheckoutForm';
 const stripePromise = loadStripe('pk_test_51L3UhfBNkSNOWAa15sGjHJRrCFqXjCnM62fxBaRElHDD2CSvKK1w8gx1kDJ86oC2PFNDsKR5AgQTB1f0UXK8IVdw00KYx6nULU');
 const PaymentPage = () => {
     const { id } = useParams()
-    const { data, isLoading } = useQuery(['booking', id], () => fetch(`https://picker-pial.herokuapp.com/payment/${id}`, {
+    const { data, isLoading } = useQuery(['booking', id], () => fetch(`https://picker-server-production.up.railway.app/payment/${id}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

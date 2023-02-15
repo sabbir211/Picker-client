@@ -8,7 +8,7 @@ const ShowRate = () => {
     const [load, setLoad] = useState(false)
     useEffect(() => {
         setLoad(true)
-        fetch('https://picker-pial.herokuapp.com/ratting', {
+        fetch('https://picker-server-production.up.railway.app/ratting', {
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`
             }

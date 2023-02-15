@@ -12,7 +12,7 @@ const MyOrders = () => {
     const [user, loading] = useAuthState(auth)
     const [orderDelete, setOrderDelete] = useState({})
 
-    const { isLoading, error, data, refetch } = useQuery('singleItem', () => fetch(`https://picker-pial.herokuapp.com/orders?email=${user.email}`, {
+    const { isLoading, error, data, refetch } = useQuery('singleItem', () => fetch(`https://picker-server-production.up.railway.app/orders?email=${user.email}`, {
         headers: {
             authorization: `bearer ${localStorage.getItem("accessToken")}`
         }

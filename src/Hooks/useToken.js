@@ -5,7 +5,7 @@ const useToken = (user) => {
     const email = user?.user?.email
     const name = user?.user?.displayName
     if (email) {
-        fetch(`https://picker-pial.herokuapp.com/user/${email}`, {
+        fetch(`https://picker-server-production.up.railway.app/user/${email}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

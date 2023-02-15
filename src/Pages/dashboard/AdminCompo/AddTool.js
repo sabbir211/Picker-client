@@ -31,7 +31,7 @@ const AddTool = () => {
                         minOrder: data.minOrder,
                         available: data.available
                     }
-                    fetch(`https://picker-pial.herokuapp.com/tools`, {
+                    fetch(`https://picker-server-production.up.railway.app/tools`, {
                         method: "post",
                         headers: {
                             "content-type": "application/json"

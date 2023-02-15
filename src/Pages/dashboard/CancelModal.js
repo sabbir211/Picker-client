@@ -3,7 +3,7 @@ import React from 'react';
 
 const CancelModal = ({refetch,orderDelete}) => {
    const handleDelete=(id)=>{
-    axios.delete(`https://picker-pial.herokuapp.com/orders/${id}`)
+    axios.delete(`https://picker-server-production.up.railway.app/orders/${id}`)
     .then(res=>{
     if(res.data.deletedCount>0){
         refetch()

@@ -12,7 +12,7 @@ const MyProfile = () => {
     const [updatedUser, setUpdatedUser] = useState({})
     useEffect(() => {
         const update = async () => {
-            fetch(`https://picker-pial.herokuapp.com/user/${user.email}`, {
+            fetch(`https://picker-server-production.up.railway.app/user/${user.email}`, {
                 method: "put",
                 headers: {
                     "content-type": "application/json",
@@ -21,7 +21,7 @@ const MyProfile = () => {
                 , body: JSON.stringify(userInfo)
             }).then(res => res.json())
                 .then(data => {
-                    fetch(`https://picker-pial.herokuapp.com/user/${user.email}`, {
+                    fetch(`https://picker-server-production.up.railway.app/user/${user.email}`, {
                         method: "get",
                         headers: {
                             "content-type": "application/json",

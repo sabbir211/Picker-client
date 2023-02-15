@@ -5,7 +5,7 @@ import SingleUser from './SingleUser';
 
 
 const MakeAdmin = () => {
- const {data,isLoading,refetch}=useQuery("users",()=>fetch('https://picker-pial.herokuapp.com/users',{method:"get",    
+ const {data,isLoading,refetch}=useQuery("users",()=>fetch('https://picker-server-production.up.railway.app/users',{method:"get",    
  headers:{
          authorization:`bearer ${localStorage.getItem("accessToken")}`
      }}).then(res=>res.json()))
